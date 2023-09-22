@@ -1,0 +1,15 @@
+.vscode/*
+.vscode
+*.dll
+
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
+
+FunLex.fs
+FunPar.fs
+*Lex.fs
+*Par.fs
