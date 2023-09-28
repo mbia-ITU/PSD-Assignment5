@@ -10,7 +10,7 @@ dotnet fsi -r FsLexYacc.Runtime.dll ...
 On Macbook
 ```{}
 mono ~/bin/fsharp/fslex.exe --unicode <LexerSpefication>.fsl
-ono ~/bin/fsharp/fsyacc.exe --module <ParserName> <ParserSpecification>.fsy
+mono ~/bin/fsharp/fsyacc.exe --module <ParserName> <ParserSpecification>.fsy
 dotnet fsi -r FsLexYacc.Runtime.dll ...
 ```
 Solved by the group Recursive Rebels.
