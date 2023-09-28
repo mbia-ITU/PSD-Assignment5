@@ -20,6 +20,8 @@
    them.  
 *)
 
+(* typ function upgraded by Recursive Rebels*)
+
 module TypedFun
 
 (* Environment operations *)
@@ -37,6 +39,7 @@ type typ =
   | TypI                                (* int                         *)
   | TypB                                (* bool                        *)
   | TypF of typ * typ                   (* (argumenttype, resulttype)  *)
+  | TypL of typ
 
 (* New abstract syntax with explicit types, instead of Absyn.expr: *)
 
@@ -50,6 +53,7 @@ type tyexpr =
   | Letfun of string * string * typ * tyexpr * typ * tyexpr
           (* (f,       x,       xTyp, fBody,  rTyp, letBody *)
   | Call of tyexpr * tyexpr
+  | ListExpr of tyexpr list * typ
 
 (* A runtime value is an integer or a function closure *)
 
@@ -137,7 +141,13 @@ let rec typ (e : tyexpr) (env : typ env) : typ =
         if typ eArg env = xTyp then rTyp
         else failwith "Call: wrong argument type"
       | _ -> failwith "Call: unknown function"
-    | Call(_, eArg) -> failwith "Call: illegal function in call"
+    | ListExpr (lst, promisedType) ->
+      let elements = List.map (fun x -> (typ x env) = promisedType) lst
+      let allElementsMatch = List.forall (fun x -> x <> false) elements
+      match allElementsMatch with
+      | true ->  TypL promisedType
+      | false -> failwith "ListExpr: not all elements are of the lists type"
+    | Call(_, _) -> failwith "Call: illegal function in call"
 
 let typeCheck e = typ e [];;
 

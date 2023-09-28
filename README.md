@@ -21,4 +21,4 @@ Files to handin:
 
 - MergeF/program.fs
 - MergeC/program.cs
-- Fun/typeInfer/TypeInference.fs
+- TypedFun/TypedFun.fs
