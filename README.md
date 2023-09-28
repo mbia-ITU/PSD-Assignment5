@@ -1,24 +1,39 @@
 # Assignment 05
 
+Solved by the group Recursive Rebels.
+
+## Exercises
+
 PLC: 5.1, 5.7, 6.1, 6.2, 6.3, 6.4 and 6.5
+
+## Run instructions
 
 ```{}
 fslex --unicode <LexerSpecification>.fsl
 fsyacc --module <ParserName> <ParserSpecification>.fsy
 dotnet fsi -r FsLexYacc.Runtime.dll ...
 ```
-On Macbook
+
+On MacBook
+
 ```{}
 mono ~/bin/fsharp/fslex.exe --unicode <LexerSpefication>.fsl
 mono ~/bin/fsharp/fsyacc.exe --module <ParserName> <ParserSpecification>.fsy
 dotnet fsi -r FsLexYacc.Runtime.dll ...
 ```
-Solved by the group Recursive Rebels.
 
-Handin file name: BPRD-05-AMDH-EMNO-MBIA.zip
+## Handin details
+
+Handin file name:
+
+- BPRD-05-AMDH-EMNO-MBIA.zip
 
 Files to handin:
 
-- MergeF/program.fs
-- MergeC/program.cs
+- Exercise6.1.md
+- MergeF/Merge.fs
+- MergeC/Merge.cs
 - TypedFun/TypedFun.fs
+- Fun/TypeInference.fs
+- Fun/FunLex.fsl
+- Fun/FunPar.fsy

@@ -7,8 +7,3 @@
     Array.Sort(output);
     return output;
 }
-
-
-int[] a = { 1, 2 , 66};
-int[] b = { -100, 2 , 50};
-foreach(var x in Merge(a,b)){ Console.WriteLine(x);}
