@@ -16,3 +16,9 @@ dotnet fsi -r FsLexYacc.Runtime.dll ...
 Solved by the group Recursive Rebels.
 
 Handin file name: BPRD-05-AMDH-EMNO-MBIA.zip
+
+Files to handin:
+
+- MergeF/program.fs
+- MergeC/program.cs
+- Fun/typeInfer/TypeInference.fs
