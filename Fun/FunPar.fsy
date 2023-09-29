@@ -15,14 +15,19 @@
 %token PLUS MINUS TIMES DIV MOD
 %token EQ NE GT LT GE LE
 %token LPAR RPAR 
+%token FUN ARROW
 %token EOF
 
-%left ELSE              /* lowest precedence  */
-%left EQ NE 
+/* lowest precedence  */
+%nonassoc FUN
+%left ELSE              
+%nonassoc NOT 
+%right ARROW 
 %left GT LT GE LE
+%left EQ NE
 %left PLUS MINUS
-%left TIMES DIV MOD 
-%nonassoc NOT           /* highest precedence  */
+%left TIMES DIV MOD
+/* highest precedence  */
 
 %start Main
 %type <Absyn.expr> Main Expr AtExpr Const
@@ -37,6 +42,7 @@ Main:
 Expr:
     AtExpr                              { $1                     }
   | AppExpr                             { $1                     }
+  | FUN NAME ARROW Expr              { Fun($2, $4) }
   | IF Expr THEN Expr ELSE Expr         { If($2, $4, $6)         }
   | MINUS Expr                          { Prim("-", CstI 0, $2)  }
   | Expr PLUS  Expr                     { Prim("+",  $1, $3)     }

@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Compile Include="Absyn.fs" />
-    <Compile Include="TypeInference.fs" />
     <Compile Include="HigherFun.fs" />
   </ItemGroup>
 
