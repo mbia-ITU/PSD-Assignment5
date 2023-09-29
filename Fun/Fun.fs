@@ -22,6 +22,10 @@ let rec lookup env x =
 
 (* A runtime value is an integer or a function closure *)
 
+
+
+
+
 type value = 
   | Int of int
   | Closure of string * string * expr * value env       (* (f, x, fBody, fDeclEnv) *)
