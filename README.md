@@ -31,6 +31,9 @@ Handin file name:
 Files to handin:
 
 - Exercise6.1.md
+- Exercise6.4.md
+- Type1.png
+- Type2.png
 - MergeF/Merge.fs
 - MergeC/Merge.cs
 - TypedFun/TypedFun.fs

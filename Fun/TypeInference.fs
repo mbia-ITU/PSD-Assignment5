@@ -281,7 +281,6 @@ let rec typ (lvl : int) (env : tenv) (e : expr) : typ =
       let bodyEnv = (f, generalize lvl fTyp) :: env
       let _ = debug ("Letfun letBodyEnv: " + (showTEnv bodyEnv))
       typ lvl bodyEnv letBody
-    | Fun(parameter, body) -> ()
     | Call(eFun, eArg) ->
       let _ = debug ("Type Call: " + (showTEnv env))
       let tf = typ lvl env eFun 
