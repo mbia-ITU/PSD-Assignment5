@@ -21,15 +21,15 @@ let commentDepth = ref 0;  (* Current comment nesting *)
 
 let keyword s =
     match s with
-    | "else"  -> ELSE 
-    | "end"   -> END
-    | "false" -> CSTBOOL false
-    | "if"    -> IF
-    | "in"    -> IN
-    | "let"   -> LET
-    | "not"   -> NOT
-    | "then"  -> THEN
-    | "true"  -> CSTBOOL true
+    | "ellers"  -> ELSE 
+    | "slut"   -> END
+    | "falsk" -> CSTBOOL false
+    | "hvis"    -> IF
+    | "i"    -> IN
+    | "lad"   -> LET
+    | "ikke"   -> NOT
+    | "så"  -> THEN
+    | "sand"  -> CSTBOOL true
     | "fun"    -> FUN
     | _       -> NAME s
 }
@@ -38,7 +38,7 @@ rule Token = parse
   | [' ' '\t' '\r'] { Token lexbuf }
   | '\n'            { lexbuf.EndPos <- lexbuf.EndPos.NextLine; Token lexbuf }
   | ['0'-'9']+      { CSTINT (System.Int32.Parse (lexemeAsString lexbuf)) }
-  | ['a'-'z''A'-'Z']['a'-'z''A'-'Z''0'-'9']*
+  | ['a'-'z''A'-'Z''Æ''Ø''Å''æ''ø''å']['a'-'z''A'-'Z''0'-'9''Æ''Ø''Å''æ''ø''å']*
                     { keyword (lexemeAsString lexbuf) }
   | "(*"            { commentStart := lexbuf.StartPos;
                       commentDepth := 1; 
