@@ -21,7 +21,15 @@ val it: string = "bool"
 
 ### Explanations when it fails
 
-TODO
+The fist expression that fails, is due to circularity of the type.
+The parameter `g` must be a function.
+However it is called with itself as parameter.
+Hence its type can't be derived as it must take take itself as parameter infinitely.
+
+The second expression that fails, because there are two different types in the expression.
+The problem is that the expression `if true then y else x` makes `x` and `y` the same type.
+Then, when `g false` is called, the type of `x` and `y` becomes `bool`.
+Then the call `f 42` fails.
 
 ## 2 Micro-ML programs
 
@@ -61,7 +69,7 @@ let g y = let f x = x in f end in g end
 let compose f = let inner g = let argument x = g (f (x)) in argument end in inner end in compose end
 ```
 
-This is an implementation of the >> / compose function in F#.
+This is an implementation of the `>>` or compose function in F#.
 
 ### 'a -> 'b
 
@@ -72,5 +80,5 @@ let f x = f x in f end
 ### 'a
 
 ```{ML}
-
+let f x = f x in f 1 end
 ```
